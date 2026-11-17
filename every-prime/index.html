@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Every Prime | Rigged</title>
+    <meta
+      name="description"
+      content="Write down every prime number. The House will check your list, and hand you back a prime you missed. Every time."
+    />
+    <meta property="og:title" content="Every Prime | Rigged" />
+    <meta property="og:description" content="Write down every prime number. The House always finds one you missed." />
+    <meta property="og:image" content="https://nanostories.github.io/rigged/assets/og.png" />
+    <meta name="theme-color" content="#ecede8" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="../assets/fonts/besley.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../assets/css/rigged.css" />
+    <script type="module" src="every-prime.js"></script>
+  </head>
+  <body>
+    <header class="site-head wrap">
+      <a class="mark" href="../">Rigged</a>
+      <p class="tally" id="tally"></p>
+    </header>
+
+    <main class="wrap">
+      <div class="game-head">
+        <h1>Every Prime</h1>
+        <p class="challenge">Write down every prime number. All of them. The House will check your list.</p>
+      </div>
+
+      <form class="list-form" id="form" novalidate>
+        <label for="primes">Your complete list of primes</label>
+        <textarea id="primes" name="primes" spellcheck="false" autocomplete="off" placeholder="2, 3, 5, 7, 11, 13"></textarea>
+        <p class="form-note" id="form-note">Separate them with commas or spaces. A prime is a whole number bigger than 1 that only 1 and itself divide.</p>
+        <p class="form-error" id="error" role="alert"></p>
+        <div class="controls">
+          <button class="btn btn-primary" id="submit" type="submit">That’s every prime</button>
+          <button class="btn-link" id="first-ten" type="button">Fill in the first ten for me</button>
+        </div>
+      </form>
+
+      <section class="slip" id="slip" hidden aria-labelledby="slip-title">
+        <h2 class="visually-hidden" id="slip-title">The House checks your list</h2>
+        <ol>
+          <li class="pending">
+            <div>
+              <p class="what">Multiply them all together</p>
+              <p class="num small" id="s-expression"></p>
+              <p class="num" id="s-product"></p>
+            </div>
+          </li>
+          <li class="pending">
+            <div>
+              <p class="what">Add one</p>
+              <p class="num" id="s-n"></p>
+            </div>
+          </li>
+          <li class="pending">
+            <div>
+              <p class="what">Divide that by each prime on your list</p>
+              <ul class="remainders" id="s-remainders"></ul>
+              <p class="what" id="s-remainders-note"></p>
+            </div>
+          </li>
+          <li class="pending">
+            <div>
+              <p class="what">Break it into primes</p>
+              <p class="num" id="s-factors"></p>
+            </div>
+          </li>
+        </ol>
+        <div class="verdict" id="verdict" hidden>
+          <p class="house" id="s-verdict" aria-live="polite"></p>
+          <div class="controls">
+            <button class="btn btn-primary" id="add-missed" type="button" hidden></button>
+            <button class="btn" id="why" type="button" hidden>How does the House always win?</button>
+            <button class="btn-link" id="new-list" type="button">Start a new list</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="notes" id="proof" hidden aria-labelledby="proof-title">
+        <h2 id="proof-title">How the House wins</h2>
+        <div>
+          <ol>
+            <li>Multiply every prime on your list together<span id="p-product"></span>.</li>
+            <li>Add one. Call the result N<span id="p-n"></span>.</li>
+            <li>
+              Divide N by any prime on your list and the remainder is 1, because N is exactly one more than a
+              multiple of that prime. So none of your primes divides N.
+            </li>
+            <li>
+              Every whole number bigger than 1 is either a prime or a product of primes, so N has at least one prime
+              factor. By step 3, that prime isn’t on your list.
+            </li>
+          </ol>
+          <p>
+            None of this depended on which primes you wrote down. Every finite list misses a prime, so there are
+            infinitely many of them.
+          </p>
+          <p>
+            Euclid wrote down a version of this argument around 300 BC, in Book IX of the <em>Elements</em>. More
+            than two thousand years later, it’s still how most people first see why the primes never run out.
+          </p>
+          <p>
+            A common slip is to think N itself must be prime. It doesn’t have to be: 2 × 3 × 5 × 7 × 11 × 13 + 1 =
+            30,031 = 59 × 509. The House only needs N to have some prime factor that isn’t on your list, and it
+            always does.
+          </p>
+          <p>
+            Start with just 2 and keep adding the smallest prime the House hands you, and you get the Euclid–Mullin
+            sequence: 2, 3, 7, 43, 13, 53, 5, 6,221,671, 38,709,183,810,571, 139, … Mathematicians suspect every
+            prime turns up in it eventually, but nobody has proved it. The smallest prime not yet known to appear is
+            41.
+          </p>
+          <p><a href="../">Back to all the games</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot wrap">
+      <p>
+        Rigged is a small, free arcade of mathematical games, designed and built by Claude, an AI model made by
+        Anthropic. The source code is on <a href="https://github.com/NanoStories/rigged">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

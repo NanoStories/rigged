@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rigged: games you can’t win</title>
+    <meta
+      name="description"
+      content="An arcade of games you can’t win. Each one is a theorem in disguise: lose, and the House shows you the proof."
+    />
+    <meta property="og:title" content="Rigged: games you can’t win" />
+    <meta
+      property="og:description"
+      content="Each game here is a theorem in disguise. Lose, and the House shows you the proof."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nanostories.github.io/rigged/" />
+    <meta property="og:image" content="https://nanostories.github.io/rigged/assets/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#ecede8" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="assets/fonts/besley.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/atkinson-next.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/css/rigged.css" />
+    <script type="module" src="assets/js/lobby.js"></script>
+  </head>
+  <body>
+    <header class="hero wrap">
+      <h1 class="visually-hidden">Rigged</h1>
+      <svg class="wordmark" id="wordmark" viewBox="0 0 1200 700" role="group" aria-labelledby="wordmark-title">
+        <title id="wordmark-title">The word Rigged, with an arc joining every pair of letters</title>
+        <g id="wordmark-letters" aria-hidden="true">
+          <text class="letter" x="110" y="440" text-anchor="middle">R</text>
+          <text class="letter" x="290" y="440" text-anchor="middle">I</text>
+          <text class="letter" x="470" y="440" text-anchor="middle">G</text>
+          <text class="letter" x="680" y="440" text-anchor="middle">G</text>
+          <text class="letter" x="885" y="440" text-anchor="middle">E</text>
+          <text class="letter" x="1080" y="440" text-anchor="middle">D</text>
+        </g>
+      </svg>
+      <div class="hero-caption">
+        <p>
+          Every pair of letters is joined by an arc, red above or blue below. Whenever three letters are joined by
+          arcs of one color, the House marks the triangle in gold. <span id="hero-verb">Click</span> an arc to flip it.
+        </p>
+        <p class="house" id="hero-house" aria-live="polite"></p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="premise" aria-labelledby="premise-title">
+        <h2 id="premise-title">You will lose.</h2>
+        <div>
+          <p>
+            Each game here hands you a challenge that looks perfectly doable. Try it. When you lose, ask the House
+            how it beat you. Its answer is a proof, and it runs on your own losing position.
+          </p>
+        </div>
+      </section>
+
+      <ul class="tables" aria-label="Games">
+        <li>
+          <a class="table-link" href="six-dots/">
+            <svg class="table-art" id="art-six-dots" viewBox="0 0 120 120" aria-hidden="true"></svg>
+            <div>
+              <h3>Six Dots</h3>
+              <p>Color every line between six dots red or blue without making a triangle that’s all one color.</p>
+              <p class="record" data-record="sixdots"></p>
+            </div>
+            <span class="btn play">Play</span>
+          </a>
+        </li>
+        <li>
+          <a class="table-link" href="every-prime/">
+            <svg class="table-art" id="art-every-prime" viewBox="0 0 120 120" aria-hidden="true"></svg>
+            <div>
+              <h3>Every Prime</h3>
+              <p>Write down every prime number. All of them. The House will check your list.</p>
+              <p class="record" data-record="primes"></p>
+            </div>
+            <span class="btn play">Play</span>
+          </a>
+        </li>
+        <li>
+          <a class="table-link" href="nobody-wins/">
+            <svg class="table-art" id="art-nobody-wins" viewBox="0 0 120 120" aria-hidden="true"></svg>
+            <div>
+              <h3>Nobody Wins</h3>
+              <p>Fill a Hex board with red and blue so that neither color can cross from one side to the other.</p>
+              <p class="record" data-record="hex"></p>
+            </div>
+            <span class="btn play">Play</span>
+          </a>
+        </li>
+      </ul>
+    </main>
+
+    <footer class="site-foot wrap">
+      <p>
+        Rigged is a small, free arcade of mathematical games, designed and built by Claude, an AI model made by
+        Anthropic. More tables are on the way. The source code is on
+        <a href="https://github.com/NanoStories/rigged">GitHub</a>.
+      </p>
+      <p>
+        Set in Besley by Owen Earl and Atkinson Hyperlegible Next by the Braille Institute, both under the SIL Open
+        Font License.
+      </p>
+    </footer>
+  </body>
+</html>

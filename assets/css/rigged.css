@@ -1,0 +1,915 @@
+/* Rigged — shared styles
+   Palette: red and blue belong to the player, gold belongs to the House
+   (it marks whatever the proof is pointing at), navy ink for everything else. */
+
+@font-face {
+  font-family: "Besley";
+  src: url("../fonts/besley.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Besley";
+  src: url("../fonts/besley-italic.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Next";
+  src: url("../fonts/atkinson-next.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Next";
+  src: url("../fonts/atkinson-next-italic.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+
+  --paper: #ecede8;
+  --paper-raised: #f7f7f3;
+  --ink: #1a2238;
+  --ink-soft: #4c5367;
+  --rule: #c4c7be;
+  --red: #e0382d;
+  --red-ink: #b3261c;
+  --blue: #2363d8;
+  --blue-ink: #1a4dae;
+  --gold: #f5c242;
+  --line-empty: #83877e;
+
+  --display: "Besley", Rockwell, "Roboto Slab", Georgia, serif;
+  --text: "Atkinson Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --fs-small: 0.9375rem;
+  --fs-body: 1.125rem;
+  --fs-lead: 1.3125rem;
+  --fs-h3: 1.625rem;
+  --fs-h2: 2.25rem;
+  --fs-h1: clamp(2.75rem, 2rem + 3.6vw, 4.75rem);
+
+  --measure: 38rem;
+  --page: 72rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  font-variant-numeric: lining-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.wrap {
+  max-width: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Site header and footer ---------- */
+
+.site-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.25rem 0;
+}
+.site-head .mark {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 1.625rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+.site-head .mark:hover {
+  text-decoration: underline;
+}
+.site-head .tally {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.site-foot {
+  margin-top: 6rem;
+  padding-block: 2rem 3rem;
+  background: linear-gradient(var(--rule), var(--rule)) top center / calc(100% - 2 * var(--gutter)) 1px no-repeat;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+.site-foot p {
+  max-width: 44rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.2;
+  padding: 0.7em 1.15em;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-primary:hover {
+  background: #2c3858;
+  border-color: #2c3858;
+}
+.btn-link {
+  font: inherit;
+  font-size: 1rem;
+  background: none;
+  border: 0;
+  padding: 0.25em 0;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.btn-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* ---------- Lobby ---------- */
+
+.hero {
+  padding-top: clamp(1rem, 3vw, 2.5rem);
+}
+.hero h1 {
+  margin: 0;
+}
+.wordmark {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.wordmark .letter {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 250px;
+  fill: var(--ink);
+}
+.wordmark .node {
+  fill: var(--ink);
+}
+.arc {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.arc.red {
+  stroke: var(--red);
+}
+.arc.blue {
+  stroke: var(--blue);
+}
+.arc-halo {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 22;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.arc-halo.on {
+  opacity: 1;
+}
+.arc-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 24;
+  cursor: pointer;
+  pointer-events: stroke;
+}
+.arc-hit:focus {
+  outline: none;
+}
+.arc.focus {
+  stroke-width: 11;
+}
+@media (max-width: 40rem) {
+  .arc {
+    stroke-width: 11;
+  }
+  .arc.focus {
+    stroke-width: 16;
+  }
+  .arc-halo {
+    stroke-width: 32;
+  }
+  .arc-hit {
+    stroke-width: 46;
+  }
+}
+
+.hero-caption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem 2rem;
+  align-items: baseline;
+  margin-top: 0.5rem;
+}
+.hero-caption p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+.hero-caption .house {
+  text-align: right;
+}
+@media (max-width: 44rem) {
+  .hero-caption {
+    grid-template-columns: 1fr;
+  }
+  .hero-caption .house {
+    text-align: left;
+  }
+}
+
+.premise {
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1rem 3rem;
+}
+.premise h2 {
+  font-size: var(--fs-h2);
+}
+.premise p {
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+@media (max-width: 52rem) {
+  .premise {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tables {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+  border-top: 2px solid var(--ink);
+}
+.tables li {
+  border-bottom: 1px solid var(--rule);
+}
+.table-link {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr) auto;
+  gap: 1.25rem 2.5rem;
+  align-items: center;
+  padding: 1.75rem 0.75rem;
+  margin-inline: -0.75rem;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.table-link:hover {
+  background: var(--paper-raised);
+}
+.table-link:hover .play {
+  background: var(--ink);
+  color: var(--paper);
+}
+.table-art {
+  width: 9rem;
+  height: 9rem;
+}
+.table-link h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 0.4rem;
+}
+.table-link p {
+  margin: 0;
+}
+.table-link .record {
+  margin-top: 0.6rem;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+.table-link .play {
+  pointer-events: none;
+}
+@media (max-width: 40rem) {
+  .table-link {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 1rem 1.25rem;
+    align-items: start;
+  }
+  .table-art {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  .table-link .play {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+/* ---------- Game pages ---------- */
+
+.game-head {
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.game-head h1 {
+  font-size: var(--fs-h1);
+}
+.game-head .challenge {
+  font-size: var(--fs-lead);
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(17rem, 5fr);
+  gap: 2rem clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+@media (max-width: 56rem) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.board {
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.side {
+  position: sticky;
+  top: 1.5rem;
+}
+@media (max-width: 56rem) {
+  .side {
+    position: static;
+  }
+}
+
+/* The House speaks in the sign-painter's face. */
+.house {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: var(--fs-lead);
+  line-height: 1.35;
+  margin: 0;
+  max-width: 30rem;
+}
+.house strong {
+  font-weight: 800;
+}
+.house .red {
+  color: var(--red-ink);
+}
+.house .blue {
+  color: var(--blue-ink);
+}
+
+.status {
+  margin: 0.9rem 0 0;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.hint {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--gold);
+}
+
+/* Step-by-step proof shown beside the board */
+.proof-steps {
+  margin: 0;
+}
+.proof-steps .step-count {
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+  margin: 0 0 0.5rem;
+}
+.proof-steps .step-text {
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  min-height: 7.5em;
+}
+.proof-steps .step-text strong {
+  font-weight: 700;
+}
+
+.swatch {
+  font-weight: 700;
+}
+.swatch.red {
+  color: var(--red-ink);
+}
+.swatch.blue {
+  color: var(--blue-ink);
+}
+
+/* Notes that appear once the proof has been shown */
+.notes {
+  margin-top: clamp(3.5rem, 8vw, 6rem);
+  padding-top: 2rem;
+  border-top: 2px solid var(--ink);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1rem 3rem;
+}
+.notes h2 {
+  font-size: var(--fs-h2);
+}
+.notes ol {
+  margin: 0 0 1.25em;
+  padding-left: 1.4em;
+  max-width: var(--measure);
+}
+.notes li {
+  margin-bottom: 0.5em;
+  padding-left: 0.25em;
+}
+.notes li::marker {
+  font-family: var(--display);
+  font-weight: 800;
+}
+@media (max-width: 52rem) {
+  .notes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reveal-in {
+  animation: reveal-in 420ms ease both;
+}
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Six Dots board ---------- */
+
+.edge {
+  stroke: var(--line-empty);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke 120ms ease, stroke-width 120ms ease, opacity 220ms ease;
+}
+.edge.red {
+  stroke: var(--red);
+  stroke-width: 8;
+}
+.edge.blue {
+  stroke: var(--blue);
+  stroke-width: 8;
+}
+.edge.hover {
+  stroke-width: 11;
+}
+.edge:not(.red):not(.blue).hover {
+  stroke: var(--ink-soft);
+  stroke-width: 5;
+}
+.edge-halo {
+  stroke: var(--gold);
+  stroke-width: 24;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.edge-halo.on {
+  opacity: 1;
+}
+.edge-hit {
+  stroke: transparent;
+  stroke-width: 26;
+  stroke-linecap: round;
+  cursor: pointer;
+}
+.edge-hit:focus {
+  outline: none;
+}
+.board.locked .edge-hit {
+  cursor: default;
+}
+.board.dim .edge:not(.keep) {
+  opacity: 0.16;
+}
+.dot {
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 5;
+}
+.dot-ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 9;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.dot-ring.on {
+  opacity: 1;
+}
+.dot-label {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 30px;
+  fill: var(--ink);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.dot-label.on {
+  opacity: 1;
+}
+.dot.new {
+  animation: dot-in 600ms ease both;
+}
+@keyframes dot-in {
+  from {
+    opacity: 0;
+    r: 0;
+  }
+}
+
+/* ---------- Every Prime ---------- */
+
+.list-form label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.list-form textarea {
+  width: 100%;
+  max-width: 40rem;
+  min-height: 6.5rem;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  resize: vertical;
+}
+.list-form textarea::placeholder {
+  color: #6b7080;
+  font-weight: 500;
+}
+.list-form textarea:focus-visible {
+  outline-offset: 2px;
+}
+.form-note {
+  margin: 0.75rem 0 0;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+.form-error {
+  margin: 0.75rem 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: var(--fs-lead);
+  color: var(--red-ink);
+}
+.form-error:empty {
+  display: none;
+}
+
+/* The House prints a slip for every list it checks. */
+.slip {
+  margin-top: 2.5rem;
+  background: var(--paper-raised);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  max-width: 46rem;
+}
+.slip ol {
+  list-style: none;
+  counter-reset: slip;
+  margin: 0;
+  padding: 0;
+}
+.slip > ol > li {
+  counter-increment: slip;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0 0.75rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.slip > ol > li:first-child {
+  padding-top: 0;
+}
+.slip > ol > li::before {
+  content: counter(slip);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.slip .what {
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+  margin: 0 0 0.2rem;
+}
+.slip .num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+  margin: 0;
+  max-width: none;
+}
+.slip .num.small {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.remainders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.remainders li {
+  display: block;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  background: var(--paper);
+}
+.slip .verdict {
+  padding-top: 1.25rem;
+}
+.slip .verdict .house {
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  font-weight: 600;
+  max-width: none;
+}
+.missed {
+  background: linear-gradient(transparent 55%, var(--gold) 55%, var(--gold) 92%, transparent 92%);
+  font-style: normal;
+  font-weight: 800;
+  padding-inline: 0.1em;
+}
+.slip > ol > li.pending {
+  opacity: 0;
+}
+.slip > ol > li.shown {
+  animation: reveal-in 380ms ease both;
+}
+
+/* ---------- Nobody Wins (Hex) ---------- */
+
+.brush {
+  display: inline-flex;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.brush button {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 650;
+  padding: 0.6em 1em;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.brush button + button {
+  border-left: 2px solid var(--ink);
+}
+.brush button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.brush .chip {
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+}
+.brush .chip.red {
+  background: var(--red);
+  border-color: var(--red);
+}
+.brush .chip.blue {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+.brush .chip.erase {
+  background: var(--paper-raised);
+}
+
+.hexboard {
+  touch-action: none;
+}
+.hexboard:focus {
+  outline: none;
+}
+.hexboard:focus-visible .cursor {
+  opacity: 1;
+}
+.cell {
+  fill: var(--paper-raised);
+  stroke: #9b9f96;
+  stroke-width: 1.5;
+  cursor: pointer;
+  transition: fill 120ms ease;
+}
+.cell.red,
+.cell.blue {
+  stroke: var(--paper);
+  stroke-width: 3;
+}
+.cell.red {
+  fill: var(--red);
+}
+.cell.blue {
+  fill: var(--blue);
+}
+.board.locked .cell {
+  cursor: default;
+}
+.cell-wet {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+.cell-wet.on {
+  opacity: 1;
+}
+.cell-mark {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 6;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+.cell-mark.on {
+  opacity: 1;
+}
+.cursor {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 4;
+  opacity: 0;
+  pointer-events: none;
+}
+.band {
+  fill: none;
+  stroke-width: 14;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.band.red {
+  stroke: var(--red);
+}
+.band.blue {
+  stroke: var(--blue);
+}
+.chain-under {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 13;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chain {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.edge-label {
+  font-family: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

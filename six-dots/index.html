@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Six Dots | Rigged</title>
+    <meta
+      name="description"
+      content="Color every line between six dots red or blue without making a triangle that’s all one color. You can’t, and the House will show you why."
+    />
+    <meta property="og:title" content="Six Dots | Rigged" />
+    <meta property="og:description" content="Color fifteen lines red or blue without making a one-color triangle. You can’t." />
+    <meta property="og:image" content="https://nanostories.github.io/rigged/assets/og.png" />
+    <meta name="theme-color" content="#ecede8" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="../assets/fonts/besley.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../assets/css/rigged.css" />
+    <script type="module" src="six-dots.js"></script>
+  </head>
+  <body>
+    <header class="site-head wrap">
+      <a class="mark" href="../">Rigged</a>
+      <p class="tally" id="tally"></p>
+    </header>
+
+    <main class="wrap">
+      <div class="game-head">
+        <h1>Six Dots</h1>
+        <p class="challenge" id="challenge">
+          Color every line red or blue without making a triangle that’s all one color.
+        </p>
+      </div>
+
+      <div class="game-layout">
+        <svg class="board" id="board" viewBox="0 0 600 600" role="group" aria-label="Dots joined by lines"></svg>
+
+        <div class="side">
+          <div id="play-panel">
+            <p class="house" id="house" aria-live="polite"></p>
+            <p class="status" id="status"></p>
+            <div class="controls">
+              <button class="btn btn-primary" id="add-dot" type="button" hidden>Add the sixth dot</button>
+              <button class="btn btn-primary" id="why" type="button" hidden>Show me why I can’t win</button>
+              <button class="btn" id="clear" type="button">Clear the board</button>
+            </div>
+            <div class="controls">
+              <button class="btn-link" id="skip" type="button" hidden>Skip the warm-up</button>
+              <button class="btn-link" id="hint-btn" type="button" hidden>Give me a hint</button>
+              <button class="btn-link" id="give-up" type="button" hidden>I give up. Show me why</button>
+            </div>
+            <p class="hint" id="hint" hidden>Give every dot exactly two red lines and two blue lines.</p>
+          </div>
+
+          <div id="proof-panel" hidden>
+            <div class="proof-steps">
+              <p class="step-count" id="step-count"></p>
+              <p class="step-text" id="step-text" aria-live="polite"></p>
+            </div>
+            <div class="controls">
+              <button class="btn btn-primary" id="next" type="button">Next</button>
+              <button class="btn btn-primary" id="again" type="button" hidden>Play again</button>
+              <button class="btn" id="back" type="button">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="notes" id="notes" hidden aria-labelledby="notes-title">
+        <h2 id="notes-title">Where this comes from</h2>
+        <div>
+          <p>
+            You just lost to the smallest case of <strong>Ramsey’s theorem</strong>, published by the British
+            mathematician Frank Ramsey in 1930. Its message: color a big enough network and some part of it is
+            forced into perfect order. Six dots are enough to force a one-color triangle. Five aren’t, as the
+            warm-up showed.
+          </p>
+          <p>
+            The House was underselling it, too. Every coloring of six dots has at least two one-color triangles,
+            never just one.
+          </p>
+          <p>
+            The numbers grow alarmingly fast. To force four dots all joined in one color, you need 18 dots. To force
+            five, you need somewhere between 43 and 46, and nobody knows the exact number. Paul Erdős liked to say
+            that if aliens threatened to destroy Earth unless we told them that number, we should put every computer
+            and mathematician to work on it. If they asked for the version with six, we should try to destroy the
+            aliens instead.
+          </p>
+          <p><a href="../">Back to all the games</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot wrap">
+      <p>
+        Rigged is a small, free arcade of mathematical games, designed and built by Claude, an AI model made by
+        Anthropic. The source code is on <a href="https://github.com/NanoStories/rigged">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

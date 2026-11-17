@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nobody Wins | Rigged</title>
+    <meta
+      name="description"
+      content="Fill a Hex board with red and blue so that neither color crosses from one side to the other. It can’t be done, and the House will show you why."
+    />
+    <meta property="og:title" content="Nobody Wins | Rigged" />
+    <meta property="og:description" content="Fill a Hex board so that nobody wins. It can’t be done." />
+    <meta property="og:image" content="https://nanostories.github.io/rigged/assets/og.png" />
+    <meta name="theme-color" content="#ecede8" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="../assets/fonts/besley.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../assets/css/rigged.css" />
+    <script type="module" src="nobody-wins.js"></script>
+  </head>
+  <body>
+    <header class="site-head wrap">
+      <a class="mark" href="../">Rigged</a>
+      <p class="tally" id="tally"></p>
+    </header>
+
+    <main class="wrap">
+      <div class="game-head">
+        <h1>Nobody Wins</h1>
+        <p class="challenge">
+          Fill every cell red or blue so that red can’t cross from top to bottom and blue can’t cross from left to
+          right.
+        </p>
+      </div>
+
+      <div class="game-layout">
+        <svg
+          class="board hexboard"
+          id="board"
+          role="application"
+          tabindex="0"
+          aria-label="Hex board, 7 by 7. Arrow keys move, Space paints, R, B and E change the brush."
+          aria-describedby="status"
+        ></svg>
+
+        <div class="side">
+          <div id="play-panel">
+            <p class="house" id="house" aria-live="polite"></p>
+            <p class="status" id="status"></p>
+            <div class="controls">
+              <div class="brush" role="group" aria-label="Brush">
+                <button type="button" data-brush="1" aria-pressed="true"><span class="chip red"></span>Red</button>
+                <button type="button" data-brush="2" aria-pressed="false"><span class="chip blue"></span>Blue</button>
+                <button type="button" data-brush="0" aria-pressed="false"><span class="chip erase"></span>Erase</button>
+              </div>
+            </div>
+            <div class="controls">
+              <button class="btn btn-primary" id="why" type="button" hidden>Show me why someone always wins</button>
+              <button class="btn" id="random" type="button">Fill the empty cells at random</button>
+              <button class="btn-link" id="clear" type="button">Clear the board</button>
+              <button class="btn-link" id="give-up" type="button" hidden>I give up. Show me why</button>
+            </div>
+          </div>
+
+          <div id="proof-panel" hidden>
+            <div class="proof-steps">
+              <p class="step-count" id="step-count"></p>
+              <p class="step-text" id="step-text" aria-live="polite"></p>
+            </div>
+            <div class="controls">
+              <button class="btn btn-primary" id="next" type="button">Next</button>
+              <button class="btn btn-primary" id="again" type="button" hidden>Play again</button>
+              <button class="btn" id="back" type="button">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="notes" id="notes" hidden aria-labelledby="notes-title">
+        <h2 id="notes-title">Where this comes from</h2>
+        <div>
+          <p>
+            The House is relying on the <strong>Hex theorem</strong>: on a completely filled board, exactly one color
+            connects its two sides. The board comes from Hex, a game invented by the Danish mathematician and poet
+            Piet Hein, who introduced it in 1942. The newspaper <em>Politiken</em> published it that December under
+            the name Polygon. John Nash came up with the same game again at Princeton in 1948 or 1949.
+          </p>
+          <p>
+            Because a game of Hex can never end in a draw, the player who moves first always has a winning strategy.
+            Nash proved this with a famously sneaky argument that never says what the strategy actually is.
+          </p>
+          <p>
+            In 1979 David Gale showed that the Hex theorem is equivalent to Brouwer’s fixed-point theorem, one of the
+            landmarks of topology. It’s often pictured with a cup of coffee: stir it however you like without
+            splashing, and once it settles, at least one point of the coffee is exactly where it started.
+          </p>
+          <p><a href="../">Back to all the games</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot wrap">
+      <p>
+        Rigged is a small, free arcade of mathematical games, designed and built by Claude, an AI model made by
+        Anthropic. The source code is on <a href="https://github.com/NanoStories/rigged">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>
